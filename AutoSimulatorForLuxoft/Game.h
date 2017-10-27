@@ -31,7 +31,7 @@ public:
 		road = new Road();
 		road->print();
 		_scoreTable = *new ScoreTable();
-		player = new Player(new Car(new StandartCarCollisionFactory(), 0, 140, 26, 26, road->getBorder(), DIRECTION_NORTH));
+		player = new Player(new Car(new StandartCarCollisionFactory(), 0, 140, 26, 26, road->getBorder(), DIRECTION_NORTH, COLOR_RED));
 		player->addSubscriber(road);
 		player->draw();
 		while (true)
@@ -121,8 +121,11 @@ public:
 		{
 			y = 5;
 		}
-
-		return new Car(getRandCollisionFactory(), speed, maxSpeed, x, y, border, direction);
+		Color _color = (Color)(rand() % 15);
+		while (_color == COLOR_DARKGRAY){
+			_color = (Color)(rand() % 15);
+		}
+		return new Car(getRandCollisionFactory(), speed, maxSpeed, x, y, border, direction, _color);
 	}
 
 	ICollisionFactory* getRandCollisionFactory() {

@@ -11,7 +11,8 @@ Car::Car(ICollisionFactory* factory,
 	int maxSpeed,
 	int x, int y,
 	const RoadBorder& border,
-	Direction direction
+	Direction direction,
+	Color color
 	)
 {
 	_xPosition = x;
@@ -21,6 +22,7 @@ Car::Car(ICollisionFactory* factory,
 	_direction = direction;
 	_border = border;
 	_collisionCar = &factory->createCollision(this);
+	_color = color;
 }
 
 

@@ -37,7 +37,8 @@ public:
 		int maxSpeed,
 		int x, int y,
 		const RoadBorder& border,
-		Direction direction );
+		Direction direction,
+		Color color);
 	
 	RoadBorder& getBorder(){
 		return _border;
