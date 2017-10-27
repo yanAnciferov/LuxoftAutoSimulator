@@ -1,0 +1,64 @@
+﻿  Road.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.h(20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(8): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(12): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(28): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(64): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Player.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.h(20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Main.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.h(20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.h(30): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.h(40): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.h(50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.h(75): warning C4101: 'ex': unreferenced local variable
+  ISubscriber.cpp
+  Collision.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.h(20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): warning C4099: 'ICollisionFactory': type name first seen using 'class' now seen using 'struct'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): note: see declaration of 'ICollisionFactory'
+  Car.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(24): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.h(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.h(20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(33): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(61): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(91): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(108): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(124): warning C4018: '<': signed/unsigned mismatch
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(188): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.h(142): warning C4715: 'Game::getRandCollisionFactory': not all control paths return a value
+  AutoSimulatorForLuxoft.vcxproj -> C:\Users\Yan\source\repos\AutoSimulatorForLuxoft\Debug\AutoSimulatorForLuxoft.exe
