@@ -1,7 +1,6 @@
 #pragma once
 #include "Header.h"
 #include "IUpdate.h"
-#include <list>
 #include "Timer.h"
 #include "console.h"
 #include "Player.h"
@@ -11,14 +10,14 @@
 using namespace std;
 class Game
 {
-	Road* road;
-	Player* player;
+	Road* _road;
+	Player* _player;
 	list<IUpdate*> _gameObjects;
 	ScoreTable _scoreTable;
-	Timer timer;
+	Timer _timer;
 public:
 	Game() {
-		_gameObjects.push_back(&timer);
+		_gameObjects.push_back(&_timer);
 		Console::SetCursorVisible(false);
 	}
 	
@@ -28,12 +27,12 @@ public:
 		system("cls");
 		Console::SetWindowSize(1200,1000);
 		srand(time(0));
-		road = new Road();
-		road->print();
+		_road = new Road();
+		_road->print();
 		_scoreTable = *new ScoreTable();
-		player = new Player(new Car(new StandartCarCollisionFactory(), 0, 140, 26, 26, road->getBorder(), DIRECTION_NORTH, COLOR_RED));
-		player->addSubscriber(road);
-		player->draw();
+		_player = new Player(new Car(new StandartCarCollisionFactory(), 0, 140, 26, 26, _road->getBorder(), DIRECTION_NORTH, COLOR_RED));
+		_player->addSubscriber(_road);
+		_player->draw();
 		while (true)
 		{
 			
@@ -42,11 +41,11 @@ public:
 			if (!userEvent())
 				return;
 
-			if (!timer.isPause()) {
+			if (!_timer.isPause()) {
 				if (!update())
 					return;
 			}
-			else timer.update();
+			else _timer.update();
 			int sleepValue = start + MS_PER_FRAME - GetTickCount();
 			if (sleepValue >= 0)
 			{
@@ -57,10 +56,12 @@ public:
 		}
 	}
 
+private:
+
 	bool update() {
 		try
 		{
-			player->update();
+			_player->update();
 			for each (IUpdate* var in _gameObjects)
 			{
 				if (!var->update()) {
@@ -70,7 +71,7 @@ public:
 				}
 
 			}
-			player->draw();
+			_player->draw();
 		}
 		catch (exception& ex)
 		{
@@ -80,29 +81,29 @@ public:
 			Console::SetCursorPosition(10,10);
 			cout << "Game over";
 			Console::SetCursorPosition(10, 12);
-			cout << "Distance: " << player->getDistance();
+			cout << "Distance: " << _player->getDistance();
 			Console::SetCursorPosition(10, 14);
-			cout << "Time: " << (int)timer.getTime() ;
+			cout << "Time: " << (int)_timer.getTime() ;
 			while (_getch() != KEYS_ENTER) {}
 			return false;
 		}
 		
 
-		_scoreTable.setDistance(player->getDistance());
-		_scoreTable.setTime(timer.getTime());
-		_scoreTable.setSpeed(player->getCurrentSpeed());
+		_scoreTable.setDistance(_player->getDistance());
+		_scoreTable.setTime(_timer.getTime());
+		_scoreTable.setSpeed(_player->getCurrentSpeed());
 
 		if (_gameObjects.size() < 6)
 		{
 			Car* car = CreateCar();
 			_gameObjects.push_back(car);
-			player->addSubscriber(car);
+			_player->addSubscriber(car);
 		}
 		return true;
 	}
 
 	Car* CreateCar() {
-		RoadBorder border = road->getBorder();
+		RoadBorder border = _road->getBorder();
 		int speed = 10 + rand() % 50;
 		int maxSpeed = 140;
 		Direction direction = (Direction)(rand() % 2);
@@ -153,25 +154,25 @@ public:
 			
 			char keyCode = _getch();
 
-			if (timer.isPause() && keyCode != KEYS_ENTER)
+			if (_timer.isPause() && keyCode != KEYS_ENTER)
 				return true;
 
 			switch (keyCode)
 			{
 			case KEYS_ENTER:
-				timer.pause();
+				_timer.pause();
 				break;
 			case KEYS_UPKEY:
-				player->accelerate();
+				_player->accelerate();
 				break;
 			case KEYS_DOWNKEY:
-				player->slowDown();
+				_player->slowDown();
 				break;
 			case KEYS_LEFTKEY:
-				player->turnLeft();
+				_player->turnLeft();
 				break;
 			case KEYS_RIGHTKEY:
-				player->turnRigth();
+				_player->turnRigth();
 				break;
 			case KEYS_ESC:
 				return false;

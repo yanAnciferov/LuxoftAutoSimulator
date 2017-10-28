@@ -46,16 +46,16 @@ int Road::getHiegthRoad() {
 
 
 RoadBorder&  Road::getBorder() {
-	return *border;
+	return *_border;
 }
 
 Road::Road() {
 	_strip = 0;
-	border = new RoadBorder(3, 43, 55, 0);
+	_border = new RoadBorder(3, 43, 55, 0);
 }
 
 Road::~Road() {
-	delete border;
+	delete _border;
 }
 
 

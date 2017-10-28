@@ -111,7 +111,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Abstacle.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="console.h" />

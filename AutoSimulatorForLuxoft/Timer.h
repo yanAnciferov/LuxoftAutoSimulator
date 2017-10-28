@@ -7,7 +7,7 @@ class Timer: public IUpdate {
 
 	clock_t _clock1;
 	clock_t _clock2;
-	clock_t timer;
+	clock_t _timer;
 	bool _start = false;
 	bool _pause = false;
 public:
@@ -23,14 +23,14 @@ public:
 			_clock1 = clock();
 
 			if(!_pause)
-				timer += _clock1 - _clock2;
+				_timer += _clock1 - _clock2;
 			
 		}
 		return true;
 	};
 
 	clock_t getTime() {
-		return timer / CLOCKS_PER_SEC;
+		return _timer / CLOCKS_PER_SEC;
 	}
 
 	void pause() {

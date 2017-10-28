@@ -24,8 +24,7 @@ class Console
 {
 private:
 	Console() = default;
-	//static int _x, _y;
-	//static
+	
 public:
 	
 	static void SetColor(Color text, Color background) {
@@ -43,6 +42,7 @@ public:
 		cci.bVisible = visible;
 		SetConsoleCursorInfo(handle, &cci);
 	}
+
 	static void SetCursorPosition(int x, int y) {
 		HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);;
 		CONSOLE_CURSOR_INFO cci = CONSOLE_CURSOR_INFO();;

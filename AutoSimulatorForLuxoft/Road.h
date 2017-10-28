@@ -9,7 +9,7 @@ class Road : public ISubscriber
 {
 
 
-	RoadBorder* border;
+	RoadBorder* _border;
 	
 	void printStrip() {
 		int h = getHiegthRoad();
