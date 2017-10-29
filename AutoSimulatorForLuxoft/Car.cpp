@@ -161,7 +161,7 @@ void Car::handleEvent(IPublisher * publisher)
 		Collision& playerCollision = *p->getCollision();
 
 		if (_collisionCar->isCollision(playerCollision))
-			throw accident_exeption();
+			throw AccidentExeption();
 
 	}
 	

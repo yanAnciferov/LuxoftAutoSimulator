@@ -9,7 +9,7 @@
 class ICollisionFactory;
 class Collision;
 
-class accident_exeption : public exception {
+class AccidentExeption : public exception {
 public:
 	virtual const char* what() const override {
 		return "The end.";

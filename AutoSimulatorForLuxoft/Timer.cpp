@@ -2,7 +2,7 @@
 #include "Timer.h"
 
 bool Timer::update() {
-	if (!_start)
+	if (_start == false)
 	{
 		_clock1 = clock();
 		_start = true;
@@ -12,7 +12,7 @@ bool Timer::update() {
 		_clock2 = _clock1;
 		_clock1 = clock();
 
-		if (!_pause)
+		if (_pause == false)
 			_timer += _clock1 - _clock2;
 
 	}
