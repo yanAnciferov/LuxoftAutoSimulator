@@ -3,6 +3,14 @@ Player::Player(Car* car) {
 	_car = car;
 }
 
+void Player::move() {
+	notifySubscriber();
+	_distance += _dx;
+}
+
+int Player::getDistance() {
+	return _distance;
+}
 
 void Player::accelerate() {
 	_car->accelerate();
@@ -51,12 +59,12 @@ void Player::clear() {
 }
 
 bool Player::update() {
-	_dx += (double)getCurrentSpeed() / MS_PER_FRAME;
+	_dx += static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
 	if (_dx >= 1)
 	{
 		clear();
 		move();
-		_dx -= (int)_dx;
+		_dx -= static_cast<int>(_dx);
 
 		draw();
 	}

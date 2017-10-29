@@ -11,44 +11,12 @@ class Timer: public IUpdate {
 	bool _start = false;
 	bool _pause = false;
 public:
-	virtual bool update() override {
-		if (!_start)
-		{
-			_clock1 = clock();
-			_start = true;
-		}
-		else
-		{
-			_clock2 = _clock1;
-			_clock1 = clock();
+	virtual bool update() override;
 
-			if(!_pause)
-				_timer += _clock1 - _clock2;
-			
-		}
-		return true;
-	};
+	clock_t getTime();
 
-	clock_t getTime() {
-		return _timer / CLOCKS_PER_SEC;
-	}
+	void pause();
 
-	void pause() {
-		_pause = !_pause;
-		Console::SetCursorPosition(47, 9);
-		Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-		if (_pause)
-		{
-			cout << "Pause";
-		}
-		else {
-		
-			cout << "     ";
-		}
-	}
-
-	bool isPause() {
-		return _pause;
-	}
+	bool isPause();
 
 };

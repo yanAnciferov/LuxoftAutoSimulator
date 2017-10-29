@@ -15,18 +15,7 @@ public:
 
 	unsigned int getLength();
 
-	bool isCollision(const Collision& collision) {
-		for (int i = 0; i < _coords.size(); i++)
-		{
-			for (int j = 0; j < collision._coords.size(); j++)
-			{
-				if (_coords[i].X == collision._coords[j].X
-						&& _coords[i].Y == collision._coords[j].Y)
-					return true;
-			}
-		}
-		return false;
-	}
+	bool isCollision(const Collision& collision);
 };
 
 
@@ -40,7 +29,6 @@ class StandartCarCollisionFactory : public ICollisionFactory {
 public:
 	Collision& createCollision(Car* car) override;
 };
-
 
 class HatchbackCarCollisionFactory : public ICollisionFactory {
 

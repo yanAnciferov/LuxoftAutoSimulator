@@ -157,18 +157,19 @@ void Car::handleEvent(IPublisher * publisher)
 				break;
 			}
 		}
-	}
 
-	Collision& playerCollision = *p->getCollision();
+		Collision& playerCollision = *p->getCollision();
 
-	
-	
 		if (_collisionCar->isCollision(playerCollision))
 			throw accident_exeption();
+
+	}
 	
-	
-	
-	
+}
+
+Collision* Car::getCollision()
+{
+	return _collisionCar;
 }
 
 void Car::addPublisher(IPublisher * publisher)
@@ -177,7 +178,7 @@ void Car::addPublisher(IPublisher * publisher)
 }
 
 bool Car::update() {
-	_dx += (double)getCurrentSpeed() / MS_PER_FRAME;
+	_dx +=	static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
 	if (_dx >= 1 || _dx <= -1)
 	{
 		//move(_dx);
@@ -192,7 +193,7 @@ bool Car::update() {
 		default:
 			break;
 		}
-		_dx -= (int)_dx;
+		_dx -= static_cast<int>(_dx);
 		if (_xPosition > 60)
 		{
 			for each (auto var in _publishers)

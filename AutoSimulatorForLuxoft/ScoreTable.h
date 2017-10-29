@@ -6,57 +6,18 @@ class ScoreTable {
 	clock_t _time = 0;
 	int _distance = 0;
 
-	void updateSpeed()
-	{
-		Console::SetCursorPosition(47, 3);
-		Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-		cout << "Speed: " << _speed << "   ";
-	}
+	void updateSpeed();
 
-	void updateDistance()
-	{
-		Console::SetCursorPosition(47, 5);
-		Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-		cout << "Distance: " << _distance << "   ";
-	}
+	void updateDistance();
 
-	void updateTimer()
-	{
-		Console::SetCursorPosition(47, 7);
-		Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-		cout << "Time: " << (int)(_time) << endl;
-	}
+	void updateTimer();
 
 public:
 
-	ScoreTable() {
-		updateTimer();
-		updateSpeed();
-		updateDistance();
-	}
+	ScoreTable();
 
-	void setDistance(int distance) {
-		if (distance != _distance) {
-			_distance = distance;
-			updateDistance();
-		}
-		
-	}
+	void setDistance(int distance);
+	void setSpeed(int speed);
 
-	void setSpeed(int speed) {
-		if (speed != _speed) {
-			_speed = speed;
-			updateSpeed();
-		}
-		
-	}
-
-	void setTime(clock_t time) {
-		if (_time != time) {
-			_time = time;
-			updateTimer();
-		}
-		
-		
-	}
+	void setTime(clock_t time);
 };

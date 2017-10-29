@@ -15,10 +15,7 @@ class Player : public IUpdate, public IPublisher
 	vector<ISubscriber*> _subscribers;
 	Car* _car;
 
-	void move() {
-		notifySubscriber();
-		_distance += _dx;
-	}
+	void move();
 
 	
 
@@ -36,9 +33,7 @@ public:
 
 	int getCurrentSpeed();
 
-	int getDistance() {
-		return _distance;
-	}
+	int getDistance();
 
 	Collision* getCollision();
 

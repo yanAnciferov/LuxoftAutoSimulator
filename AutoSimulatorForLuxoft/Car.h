@@ -16,6 +16,8 @@ public:
 	}
 };
 
+
+
 class Car : public IUpdate, public ISubscriber
 {
 
@@ -70,9 +72,7 @@ public:
 
 	Direction getDirection();
 
-	Collision* getCollision() {
-		return _collisionCar;
-	}
+	Collision* getCollision();
 
 	~Car();
 

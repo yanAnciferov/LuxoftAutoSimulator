@@ -106,3 +106,16 @@ COORD& Collision::at(int index) {
 unsigned int Collision::getLength() {
 	return _coords.size();
 }
+
+bool Collision::isCollision(const Collision& collision) {
+	for (int i = 0; i < _coords.size(); i++)
+	{
+		for (int j = 0; j < collision._coords.size(); j++)
+		{
+			if (_coords[i].X == collision._coords[j].X
+				&& _coords[i].Y == collision._coords[j].Y)
+				return true;
+		}
+	}
+	return false;
+}
