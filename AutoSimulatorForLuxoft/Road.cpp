@@ -1,4 +1,9 @@
+#ifndef COM_COMPANY_MODULE_ROAD_H
+#define COM_COMPANY_MODULE_ROAD_H
+
 #include "Road.h"
+
+#endif 
 
 void Road::printStrip() {
 	int h = getHiegthRoad();
@@ -8,11 +13,11 @@ void Road::printStrip() {
 	Color color1 = COLOR_WHITE;
 	Color color2 = COLOR_DARKGRAY;
 
-	if (strip_ < 4)
+	if (strip_ < STRIP_LENGTH)
 	{
 		for (size_t i = 0; i < h; i++)
 		{
-			if ((i - strip_) % 4 == 0)
+			if ((i - strip_) % STRIP_LENGTH == 0)
 			{
 				stripPrint = !stripPrint;
 			}
@@ -21,15 +26,15 @@ void Road::printStrip() {
 				Console::SetColor(color2, color2);
 			}
 			else Console::SetColor(color1, color1);
-			Console::SetCursorPosition(w / 2 + 3, i);
-			cout << char(219);
+			Console::SetCursorPosition(w / getRoadwayCount() + border_->getLeftBorder(), i);
+			cout << char(RECTANGLE_SYMBOL);
 		}
 	}
 	else
 	{
 		for (size_t i = 0; i < h; i++)
 		{
-			if ((i - strip_ - 4) % 4 == 0)
+			if ((i - strip_ - STRIP_LENGTH) % STRIP_LENGTH == 0)
 			{
 				stripPrint = !stripPrint;
 			}
@@ -38,8 +43,8 @@ void Road::printStrip() {
 				Console::SetColor(color1, color1);
 			}
 			else Console::SetColor(color2, color2);
-			Console::SetCursorPosition(w / 2 + 3, i);
-			cout << char(219);
+			Console::SetCursorPosition(w / getRoadwayCount() + border_->getLeftBorder(), i);
+			cout << char(RECTANGLE_SYMBOL);
 		}
 
 
@@ -56,17 +61,17 @@ void Road::print() {
 	for (size_t i = 0; i < h; i++)
 	{
 		Console::SetColor(COLOR_GREEN, COLOR_GREEN);
-		cout << char(219) << char(219) << char(219);
+		cout << char(RECTANGLE_SYMBOL) << char(RECTANGLE_SYMBOL) << char(RECTANGLE_SYMBOL);
 		for (size_t j = 0; j < w; j++)
 		{
 
-			Console::SetCursorPosition(j + 3, i);
+			Console::SetCursorPosition(j + border_->getLeftBorder(), i);
 			Console::SetColor(COLOR_DARKGRAY, COLOR_DARKGRAY);
-			cout << char(219);
+			cout << char(RECTANGLE_SYMBOL);
 
 		}
 		Console::SetColor(COLOR_GREEN, COLOR_GREEN);
-		cout << char(219) << char(219) << char(219);
+		cout << char(RECTANGLE_SYMBOL) << char(RECTANGLE_SYMBOL) << char(RECTANGLE_SYMBOL);
 
 	}
 	printStrip();
@@ -75,9 +80,9 @@ void Road::print() {
 void Road::move(int moveCount) {
 	for (size_t i = 0; i < moveCount; i++)
 	{
-		if (++strip_ >= 8)
+		if (++strip_ >= STRIP_LENGTH * 2)
 		{
-			strip_ = 0;
+			strip_ = START_STRIP_POSITION;
 		}
 	}
 
@@ -85,21 +90,29 @@ void Road::move(int moveCount) {
 }
 
 int Road::getWidthRoad() {
-	return 41;
+	return ROAD_RIGTH_COORD - ROAD_LEFT_COORD + 1;
 }
 
 int Road::getHiegthRoad() {
-	return 56;
+	return ROAD_BOTTOM_COORD + 1;
 }
 
+int Road::getRoadwayCount() {
+	return ROADWEY_COUNT;
+}
 
 RoadBorder&  Road::getBorder() {
 	return *border_;
 }
 
 Road::Road() {
-	strip_ = 0;
-	border_ = new RoadBorder(3, 43, 55, 0);
+	strip_ = START_STRIP_POSITION;
+	border_ = new RoadBorder(
+						ROAD_LEFT_COORD,
+						ROAD_RIGTH_COORD,
+						ROAD_BOTTOM_COORD,
+						ROAD_TOP_COORD
+						);
 }
 
 Road::~Road() {

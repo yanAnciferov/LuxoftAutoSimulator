@@ -1,15 +1,16 @@
-#pragma once
-#include "Header.h"
-#include "IUpdate.h"
-#include "console.h"
-#include "Car.h"
-#include "Road.h"
-#include "Collision.h"
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
 
-#ifndef OBSERVER
-#define OBSERVER
-#include "Observer.h"
-#endif 
+#include "Header.h"
+
+#endif
+
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
+
+#include "MyTypes.h"
+
+#endif
 
 class Car;
 class Collision;

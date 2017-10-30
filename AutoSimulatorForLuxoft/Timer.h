@@ -1,7 +1,17 @@
-#pragma once
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
+
 #include "Header.h"
-#include "IUpdate.h"
-#include "console.h"
+
+#endif
+
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
+
+#include "MyTypes.h"
+
+#endif
+
 class Timer: public IUpdate {
 
 public:

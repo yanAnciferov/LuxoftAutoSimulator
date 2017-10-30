@@ -1,5 +1,9 @@
-#pragma once
+#ifndef COM_COMPANY_MODULE_SCORETABLE_H
+#define COM_COMPANY_MODULE_SCORETABLE_H
+
 #include "ScoreTable.h"
+
+#endif 
 
 void  ScoreTable::updateSpeed()
 {
@@ -23,9 +27,17 @@ void ScoreTable::updateTimer()
 }
 
 ScoreTable::ScoreTable() {
+
+
+	speed_ = START_TIME_VALUE;
+	time_ = START_TIME_VALUE;
+	distance_ = START_TIME_VALUE;
+
 	updateTimer();
 	updateSpeed();
 	updateDistance();
+
+
 }
 
 void ScoreTable::setDistance(int distance) {

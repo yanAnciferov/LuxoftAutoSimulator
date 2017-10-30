@@ -1,4 +1,10 @@
+#ifndef COM_COMPANY_MODULE_PLAYER_H
+#define COM_COMPANY_MODULE_PLAYER_H
+
 #include "Player.h"
+
+#endif 
+
 Player::Player(Car* car) {
 	car_ = car;
 }

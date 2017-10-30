@@ -1,5 +1,9 @@
-#pragma once
+#ifndef COM_COMPANY_MODULE_TIMER_H
+#define COM_COMPANY_MODULE_TIMER_H
+
 #include "Timer.h"
+
+#endif 
 
 bool Timer::update() {
 	if (start_ == false)

@@ -1,6 +1,9 @@
-#pragma once
-#include "console.h"
-#include "Header.h"
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
+
+#include "MyTypes.h"
+
+#endif
 class ScoreTable {
 	
 
@@ -16,9 +19,9 @@ public:
 
 private: 
 
-	int speed_ = 0;
-	clock_t time_ = 0;
-	int distance_ = 0;
+	int speed_;
+	clock_t time_;
+	int distance_;
 
 	void updateSpeed();
 

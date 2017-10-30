@@ -1,15 +1,30 @@
-#pragma once
-#include "console.h"
-#include "IUpdate.h"
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
 
-#ifndef OBSERVER
-#define OBSERVER
-	#include "Observer.h"
+#include "Header.h"
+
+#endif
+
+#ifndef COM_COMPANY_MODULE_OBSERVER_H
+#define COM_COMPANY_MODULE_OBSERVER_H
+
+#include "Observer.h"
+
 #endif 
 
-#include "Player.h"
+#ifndef COM_COMPANY_MODULE_ROADBORDER_H
+#define COM_COMPANY_MODULE_ROADBORDER_H
+
 #include "RoadBorder.h"
-#include "Collision.h"
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
+
+#include "MyTypes.h"
+
+#endif
 
 class ICollisionFactory;
 class Collision;

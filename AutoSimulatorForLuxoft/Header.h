@@ -1,30 +1,59 @@
-#pragma once
+
+
+#ifndef COM_COMPANY_MODULE_IOSTREAM_H
+#define COM_COMPANY_MODULE_IOSTREAM_H
+
 #include <iostream>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_STDIO_H
+#define COM_COMPANY_MODULE_STDIO_H
+
 #include <stdio.h>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_CTIME_H
+#define COM_COMPANY_MODULE_CTIME_H
+
 #include <ctime>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_ATLTIME_H
+#define COM_COMPANY_MODULE_ATLTIME_H
+
 #include <atltime.h>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_WINDOWS_H
+#define COM_COMPANY_MODULE_WINDOWS_H
+
 #include <windows.h>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_LIST_H
+#define COM_COMPANY_MODULE_LIST_H
+
 #include <list>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_CONIO_H
+#define COM_COMPANY_MODULE_CONIO_H
+
 #include <conio.h>
+
+#endif 
+
+#ifndef COM_COMPANY_MODULE_VECTOR_H
+#define COM_COMPANY_MODULE_VECTOR_H
+
 #include <vector>
 
+#endif 
+
 using namespace std;
-
-int const MS_PER_FRAME = 50;
-
-enum Keys {
-	KEYS_RIGHTKEY = 77,
-	KEYS_LEFTKEY = 75,
-	KEYS_UPKEY = 72,
-	KEYS_DOWNKEY = 80,
-	KEYS_ENTER = 13,
-	KEYS_ESC = 27
-};
-
-
-enum Direction {
-	DIRECTION_NORTH,
-	DIRECTION_SOUTH,
-	DIRECTION_WEST,
-	DIRECTION_EAST
-};

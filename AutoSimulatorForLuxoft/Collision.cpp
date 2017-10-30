@@ -1,5 +1,9 @@
+#ifndef COM_COMPANY_MODULE_COLLISION_H
+#define COM_COMPANY_MODULE_COLLISION_H
+
 #include "Collision.h"
 
+#endif 
 Collision& StandartCarCollisionFactory::createCollision(Car* car) {
 	short int x = car->getX(), y = car->getY();
 	if (car->getDirection() == DIRECTION_NORTH)

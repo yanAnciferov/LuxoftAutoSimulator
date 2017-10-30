@@ -114,9 +114,11 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="console.h" />
+    <ClInclude Include="Const.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="IUpdate.h" />
+    <ClInclude Include="MyTypes.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Road.h" />

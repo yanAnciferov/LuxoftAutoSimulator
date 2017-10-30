@@ -1,13 +1,18 @@
-#pragma once
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
+
 #include "Header.h"
-#include "IUpdate.h"
-#include "Timer.h"
-#include "console.h"
-#include "Player.h"
-#include "Road.h"
-#include "ScoreTable.h"
-#include "Collision.h"
-using namespace std;
+
+#endif
+
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
+
+#include "MyTypes.h"
+
+#endif
+
+
 
 class Game
 {
@@ -21,7 +26,7 @@ private:
 
 	Road* road_;
 	Player* player_;
-	list<IUpdate*> gameObjects_;
+	vector<IUpdate*> gameObjects_;
 	ScoreTable scoreTable_;
 	Timer timer_;
 

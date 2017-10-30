@@ -1,12 +1,16 @@
-#pragma once
-#ifndef COM_COMPANY_MODULE_OBSERVER_H
-#define COM_COMPANY_MODULE_OBSERVER_H
-#include "Observer.h"
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
+
+#include "Header.h"
+
 #endif
-#include "Player.h"
 
-#include "RoadBorder.h"
+#ifndef COM_COMPANY_MODULE_MYTYPES_H
+#define COM_COMPANY_MODULE_MYTYPES_H
 
+#include "MyTypes.h"
+
+#endif
 
 class Road : public ISubscriber
 {
@@ -21,6 +25,8 @@ public:
 	int getWidthRoad();
 
 	int getHiegthRoad();
+
+	int getRoadwayCount();
 
 	RoadBorder& getBorder();
 

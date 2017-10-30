@@ -1,4 +1,9 @@
+#ifndef COM_COMPANY_MODULE_CAR_H
+#define COM_COMPANY_MODULE_CAR_H
+
 #include "Car.h"
+
+#endif 
 
 
 
@@ -33,7 +38,7 @@ void Car::accelerate() {
 }
 
 void Car::slowDown() {
-	if (speed_ != 0)
+	if (speed_ != MIN_CAR_SPEED)
 		speed_--;
 
 }
@@ -65,9 +70,9 @@ void Car::draw() {
 		int x = collisionCar_->at(i).X;
 		int y = collisionCar_->at(i).Y;
 		Console::SetColor(color_, COLOR_DARKGRAY);
-		if (x <= border_.getDownBorder() && x >= 0) {
+		if (x <= border_.getDownBorder() && x >= border_.getUpBorder()) {
 			Console::SetCursorPosition(y,x);
-			cout << char(219);
+			cout << char(RECTANGLE_SYMBOL);
 		}
 	}
 }
@@ -95,7 +100,7 @@ void Car::clear() {
 		int x = collisionCar_->at(i).X;
 		int y = collisionCar_->at(i).Y;
 		Console::SetColor(color_, COLOR_DARKGRAY);
-		if (x <= border_.getDownBorder() && x >= 0) {
+		if (x <= border_.getDownBorder() && x >= border_.getUpBorder()) {
 			Console::SetCursorPosition(y, x);
 			cout << ' ';
 		}
@@ -104,7 +109,7 @@ void Car::clear() {
 
 void Car::turnLeft() {
 	
-	if (yPosition_ > border_.getLeftBorder() + 1 && speed_ > 5)
+	if (yPosition_ > border_.getLeftBorder() + 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
 	{
 		clear();
 		for (int i = 0; i < collisionCar_->getLength(); i++)
@@ -120,7 +125,7 @@ void Car::turnLeft() {
 
 void Car::turnRigth() {
 	
-	if (yPosition_ < border_.getRigthBorder() - 1 && speed_ > 5)
+	if (yPosition_ < border_.getRigthBorder() - 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
 	{
 		clear();
 		for (int i = 0; i < collisionCar_->getLength(); i++)
@@ -143,15 +148,15 @@ void Car::handleEvent(IPublisher * publisher)
 	Player* p = dynamic_cast<Player*>(publisher);
 	if (p != NULL)
 	{
-		double moveCount = p->getDx();
-		if(moveCount >= 1){
+		double numberOfMovements = p->getDx();
+		if(numberOfMovements >= 1){
 			switch (direction_)
 			{
 			case DIRECTION_NORTH:
-				dx_ -= moveCount;
+				dx_ -= numberOfMovements;
 				break;
 			case DIRECTION_SOUTH:
-				dx_ += moveCount;
+				dx_ += numberOfMovements;
 				break;
 			default:
 				break;
@@ -194,7 +199,7 @@ bool Car::update() {
 			break;
 		}
 		dx_ -= static_cast<int>(dx_);
-		if (xPosition_ > 60)
+		if (xPosition_ > POSITION_FOR_REMOVE_BOT)
 		{
 			for each (auto var in publishers_)
 			{

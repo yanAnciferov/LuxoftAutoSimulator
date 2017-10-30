@@ -1,6 +1,19 @@
-#pragma once
+#ifndef COM_COMPANY_MODULE_HEADER_H
+#define COM_COMPANY_MODULE_HEADER_H
+
 #include "Header.h"
+
+#endif
+
+
+
+#ifndef COM_COMPANY_MODULE_CAR_H
+#define COM_COMPANY_MODULE_CAR_H
+
 #include "Car.h"
+
+#endif 
+
 class Car;
 
 class Collision{
