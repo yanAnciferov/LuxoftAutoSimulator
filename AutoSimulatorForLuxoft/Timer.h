@@ -4,12 +4,6 @@
 #include "console.h"
 class Timer: public IUpdate {
 
-
-	clock_t _clock1;
-	clock_t _clock2;
-	clock_t _timer;
-	bool _start = false;
-	bool _pause = false;
 public:
 	virtual bool update() override;
 
@@ -19,4 +13,10 @@ public:
 
 	bool isPause();
 
+private:
+	clock_t clock1_;
+	clock_t clock2_;
+	clock_t timer_;
+	bool start_ = false;
+	bool pause_ = false;
 };

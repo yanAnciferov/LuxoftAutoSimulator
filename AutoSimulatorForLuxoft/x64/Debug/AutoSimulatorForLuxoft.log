@@ -1,26 +1,38 @@
-﻿  Timer.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-  Road.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
+﻿  Road.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(14): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(41): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(63): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\road.cpp(112): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Player.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(14): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.cpp(8): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.cpp(97): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Main.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(14): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
+  Game.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(14): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(34): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(69): warning C4101: 'ex': unreferenced local variable
   Collision.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): warning C4099: 'ICollisionFactory': type name first seen using 'class' now seen using 'struct'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): warning C4099: 'ICollisionFactory': type name first seen using 'class' now seen using 'struct'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.cpp(107): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
   Car.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(14): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
+  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(24): note: see declaration of 'ICollisionFactory'
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(63): warning C4018: '<': signed/unsigned mismatch
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(77): warning C4018: '<': signed/unsigned mismatch
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(93): warning C4018: '<': signed/unsigned mismatch
@@ -29,21 +41,11 @@ c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(188): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.cpp(191): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Generating Code...
-  Compiling...
-  Player.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.cpp(8): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\player.cpp(97): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Game.cpp
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(51): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\car.h(9): warning C4099: 'ICollisionFactory': type name first seen using 'struct' now seen using 'class'
-  c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\collision.h(22): note: see declaration of 'ICollisionFactory'
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(34): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(69): warning C4101: 'ex': unreferenced local variable
-  Generating Code...
 c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\game.cpp(139): warning C4715: 'Game::getRandCollisionFactory': not all control paths return a value
+  Compiling...
+  Timer.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  ScoreTable.cpp
+c:\users\yan\source\repos\autosimulatorforluxoft\autosimulatorforluxoft\console.h(49): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating Code...
   AutoSimulatorForLuxoft.vcxproj -> C:\Users\Yan\source\repos\AutoSimulatorForLuxoft\x64\Debug\AutoSimulatorForLuxoft.exe

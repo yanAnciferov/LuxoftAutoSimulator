@@ -3,7 +3,7 @@
 
 
 Car::Car(ICollisionFactory* factory) {
-	_collisionCar = &factory->createCollision(this);
+	collisionCar_ = &factory->createCollision(this);
 }
 
 Car::Car(ICollisionFactory* factory,
@@ -15,57 +15,57 @@ Car::Car(ICollisionFactory* factory,
 	Color color
 	)
 {
-	_xPosition = x;
-	_yPosition = y;
-	_speed = startSpeed;
-	_maxSpeed = maxSpeed;
-	_direction = direction;
-	_border = border;
-	_collisionCar = &factory->createCollision(this);
-	_color = color;
+	xPosition_ = x;
+	yPosition_ = y;
+	speed_ = startSpeed;
+	maxSpeed_ = maxSpeed;
+	direction_ = direction;
+	border_ = border;
+	collisionCar_ = &factory->createCollision(this);
+	color_ = color;
 }
 
 
 void Car::accelerate() {
-	if (_speed != getMaxSpeed())
-		_speed++;
+	if (speed_ != getMaxSpeed())
+		speed_++;
 
 }
 
 void Car::slowDown() {
-	if (_speed != 0)
-		_speed--;
+	if (speed_ != 0)
+		speed_--;
 
 }
 
 int Car::getMaxSpeed() {
-	return _maxSpeed;
+	return maxSpeed_;
 }
 
 Direction Car::getDirection() {
-	return _direction;
+	return direction_;
 }
 
 int Car::getCurrentSpeed() {
-	return _speed;
+	return speed_;
 }
 
 int Car::getY() {
-	return _yPosition;
+	return yPosition_;
 }
 
 int Car::getX() {
-	return _xPosition;
+	return xPosition_;
 }
 
 void Car::draw() {
 	
-	for (int i = 0; i < _collisionCar->getLength(); i++)
+	for (int i = 0; i < collisionCar_->getLength(); i++)
 	{
-		int x = _collisionCar->at(i).X;
-		int y = _collisionCar->at(i).Y;
-		Console::SetColor(_color, COLOR_DARKGRAY);
-		if (x <= _border.downBorder && x >= 0) {
+		int x = collisionCar_->at(i).X;
+		int y = collisionCar_->at(i).Y;
+		Console::SetColor(color_, COLOR_DARKGRAY);
+		if (x <= border_.getDownBorder() && x >= 0) {
 			Console::SetCursorPosition(y,x);
 			cout << char(219);
 		}
@@ -74,14 +74,14 @@ void Car::draw() {
 
 void Car::move(int moveCount) {
 	clear();
-	for (int i = 0; i < _collisionCar->getLength(); i++)
+	for (int i = 0; i < collisionCar_->getLength(); i++)
 	{
-		_collisionCar->at(i).X-=moveCount;
+		collisionCar_->at(i).X-=moveCount;
 	}
-	_xPosition -= moveCount;
+	xPosition_ -= moveCount;
 	draw();
 	
-	for each (auto var in _publishers)
+	for each (auto var in publishers_)
 	{
 		var->notifySubscriber();
 	}
@@ -90,12 +90,12 @@ void Car::move(int moveCount) {
 void Car::clear() {
 
 	
-	for (int i = 0; i < _collisionCar->getLength(); i++)
+	for (int i = 0; i < collisionCar_->getLength(); i++)
 	{
-		int x = _collisionCar->at(i).X;
-		int y = _collisionCar->at(i).Y;
-		Console::SetColor(_color, COLOR_DARKGRAY);
-		if (x <= _border.downBorder && x >= 0) {
+		int x = collisionCar_->at(i).X;
+		int y = collisionCar_->at(i).Y;
+		Console::SetColor(color_, COLOR_DARKGRAY);
+		if (x <= border_.getDownBorder() && x >= 0) {
 			Console::SetCursorPosition(y, x);
 			cout << ' ';
 		}
@@ -104,14 +104,14 @@ void Car::clear() {
 
 void Car::turnLeft() {
 	
-	if (_yPosition > _border.leftBorder + 1 && _speed > 5)
+	if (yPosition_ > border_.getLeftBorder() + 1 && speed_ > 5)
 	{
 		clear();
-		for (int i = 0; i < _collisionCar->getLength(); i++)
+		for (int i = 0; i < collisionCar_->getLength(); i++)
 		{
-			_collisionCar->at(i).Y--;
+			collisionCar_->at(i).Y--;
 		}
-		_yPosition--;
+		yPosition_--;
 		draw();
 	}
 	
@@ -120,14 +120,14 @@ void Car::turnLeft() {
 
 void Car::turnRigth() {
 	
-	if (_yPosition < _border.rigthBorder - 1 && _speed > 5)
+	if (yPosition_ < border_.getRigthBorder() - 1 && speed_ > 5)
 	{
 		clear();
-		for (int i = 0; i < _collisionCar->getLength(); i++)
+		for (int i = 0; i < collisionCar_->getLength(); i++)
 		{
-			_collisionCar->at(i).Y++;
+			collisionCar_->at(i).Y++;
 		}
-		_yPosition++;
+		yPosition_++;
 		draw();
 	}
 	
@@ -145,13 +145,13 @@ void Car::handleEvent(IPublisher * publisher)
 	{
 		double moveCount = p->getDx();
 		if(moveCount >= 1){
-			switch (_direction)
+			switch (direction_)
 			{
 			case DIRECTION_NORTH:
-				_dx -= moveCount;
+				dx_ -= moveCount;
 				break;
 			case DIRECTION_SOUTH:
-				_dx += moveCount;
+				dx_ += moveCount;
 				break;
 			default:
 				break;
@@ -160,7 +160,7 @@ void Car::handleEvent(IPublisher * publisher)
 
 		Collision& playerCollision = *p->getCollision();
 
-		if (_collisionCar->isCollision(playerCollision))
+		if (collisionCar_->isCollision(playerCollision))
 			throw AccidentExeption();
 
 	}
@@ -169,34 +169,34 @@ void Car::handleEvent(IPublisher * publisher)
 
 Collision* Car::getCollision()
 {
-	return _collisionCar;
+	return collisionCar_;
 }
 
 void Car::addPublisher(IPublisher * publisher)
 {
-	_publishers.push_back(publisher);
+	publishers_.push_back(publisher);
 }
 
 bool Car::update() {
-	_dx +=	static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
-	if (_dx >= 1 || _dx <= -1)
+	dx_ +=	static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
+	if (dx_ >= 1 || dx_ <= -1)
 	{
 		//move(_dx);
-		switch (_direction)
+		switch (direction_)
 		{
 		case DIRECTION_NORTH:
-			move(_dx);
+			move(dx_);
 			break;
 		case DIRECTION_SOUTH:
-			move(-1 * _dx);
+			move(-1 * dx_);
 			break;
 		default:
 			break;
 		}
-		_dx -= static_cast<int>(_dx);
-		if (_xPosition > 60)
+		dx_ -= static_cast<int>(dx_);
+		if (xPosition_ > 60)
 		{
-			for each (auto var in _publishers)
+			for each (auto var in publishers_)
 			{
 				var->removeSubscriber(this);
 			}

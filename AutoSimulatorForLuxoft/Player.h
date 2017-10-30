@@ -1,29 +1,24 @@
 #pragma once
 #include "Header.h"
 #include "IUpdate.h"
-#include "Observer.h"
 #include "console.h"
 #include "Car.h"
 #include "Road.h"
 #include "Collision.h"
+
+#ifndef OBSERVER
+#define OBSERVER
+#include "Observer.h"
+#endif 
+
 class Car;
 class Collision;
+
 class Player : public IUpdate, public IPublisher
 {
-	double _dx = 0.0;
-	int _distance = 0;
-	vector<ISubscriber*> _subscribers;
-	Car* _car;
-
-	void move();
-
-	
-
-
 
 public:
 	Player(Car* car);
-
 
 	void accelerate();
 
@@ -57,5 +52,14 @@ public:
 	virtual void removeSubscriber(ISubscriber * subscriber) override;
 
 	virtual void notifySubscriber() override;
+
+private: 
+
+	double dx_ = 0.0;
+	int distance_ = 0;
+	vector<ISubscriber*> subscribers_;
+	Car* car_;
+
+	void move();
 };
 

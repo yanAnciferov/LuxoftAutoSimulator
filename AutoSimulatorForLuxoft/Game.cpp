@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game() {
-	_gameObjects.push_back(&_timer);
+	gameObjects_.push_back(&timer_);
 	Console::SetCursorVisible(false);
 }
 
@@ -11,23 +11,23 @@ void Game::start() {
 	system("cls");
 	Console::SetWindowSize(1200, 1000);
 	srand(time(0));
-	_road = new Road();
-	_road->print();
-	_scoreTable = *new ScoreTable();
-	_player = new Player(
+	road_ = new Road();
+	road_->print();
+	scoreTable_ = *new ScoreTable();
+	player_ = new Player(
 					new Car(
 						new StandartCarCollisionFactory(),
 						0,
 						140,
 						26,
 						26,
-						_road->getBorder(),
+						road_->getBorder(),
 						DIRECTION_NORTH,
 						COLOR_RED
 					)
 			);
-	_player->addSubscriber(_road);
-	_player->draw();
+	player_->addSubscriber(road_);
+	player_->draw();
 	while (true)
 	{
 
@@ -36,11 +36,11 @@ void Game::start() {
 		if (!userEvent())
 			return;
 
-		if (!_timer.isPause()) {
+		if (!timer_.isPause()) {
 			if (!update())
 				return;
 		}
-		else _timer.update();
+		else timer_.update();
 		int sleepValue = start + MS_PER_FRAME - GetTickCount();
 		if (sleepValue >= 0)
 		{
@@ -54,17 +54,17 @@ void Game::start() {
 bool Game::update() {
 	try
 	{
-		_player->update();
-		for each (IUpdate* var in _gameObjects)
+		player_->update();
+		for each (IUpdate* var in gameObjects_)
 		{
 			if (!var->update()) {
-				_gameObjects.remove(var);
+				gameObjects_.remove(var);
 				delete var;
 				break;
 			}
 
 		}
-		_player->draw();
+		player_->draw();
 	}
 	catch (exception& ex)
 	{
@@ -74,29 +74,29 @@ bool Game::update() {
 		Console::SetCursorPosition(10, 10);
 		cout << "Game over";
 		Console::SetCursorPosition(10, 12);
-		cout << "Distance: " << _player->getDistance();
+		cout << "Distance: " << player_->getDistance();
 		Console::SetCursorPosition(10, 14);
-		cout << "Time: " << static_cast<int>(_timer.getTime());
+		cout << "Time: " << static_cast<int>(timer_.getTime());
 		while (_getch() != KEYS_ENTER) {}
 		return false;
 	}
 
 
-	_scoreTable.setDistance(_player->getDistance());
-	_scoreTable.setTime(_timer.getTime());
-	_scoreTable.setSpeed(_player->getCurrentSpeed());
+	scoreTable_.setDistance(player_->getDistance());
+	scoreTable_.setTime(timer_.getTime());
+	scoreTable_.setSpeed(player_->getCurrentSpeed());
 
-	if (_gameObjects.size() < 6)
+	if (gameObjects_.size() < 6)
 	{
 		Car* car = CreateCar();
-		_gameObjects.push_back(car);
-		_player->addSubscriber(car);
+		gameObjects_.push_back(car);
+		player_->addSubscriber(car);
 	}
 	return true;
 }
 
 Car* Game::CreateCar() {
-	RoadBorder border = _road->getBorder();
+	RoadBorder border = road_->getBorder();
 	int speed = 10 + rand() % 50;
 	int maxSpeed = 140;
 	Direction direction = static_cast<Direction>(rand() % 2);
@@ -104,10 +104,10 @@ Car* Game::CreateCar() {
 	int y;
 	if (direction == DIRECTION_NORTH)
 	{
-		y = border.rigthBorder / 2 + rand() % 17;
+		y = border.getRigthBorder() / 2 + rand() % 17;
 	}
 	else {
-		y = 2 + rand() % (border.rigthBorder / 2) - 6;
+		y = 2 + rand() % (border.getRigthBorder() / 2) - 6;
 	}
 	y -= y % 4;
 	y += 5;
@@ -144,25 +144,25 @@ bool Game::userEvent() {
 
 		char keyCode = _getch();
 
-		if (_timer.isPause() && keyCode != KEYS_ENTER)
+		if (timer_.isPause() && keyCode != KEYS_ENTER)
 			return true;
 
 		switch (keyCode)
 		{
 		case KEYS_ENTER:
-			_timer.pause();
+			timer_.pause();
 			break;
 		case KEYS_UPKEY:
-			_player->accelerate();
+			player_->accelerate();
 			break;
 		case KEYS_DOWNKEY:
-			_player->slowDown();
+			player_->slowDown();
 			break;
 		case KEYS_LEFTKEY:
-			_player->turnLeft();
+			player_->turnLeft();
 			break;
 		case KEYS_RIGHTKEY:
-			_player->turnRigth();
+			player_->turnRigth();
 			break;
 		case KEYS_ESC:
 			return false;

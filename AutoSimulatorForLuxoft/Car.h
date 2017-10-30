@@ -1,13 +1,19 @@
 #pragma once
-//#include "ICarPrint.h"
 #include "console.h"
 #include "IUpdate.h"
-#include "Observer.h"
+
+#ifndef OBSERVER
+#define OBSERVER
+	#include "Observer.h"
+#endif 
+
 #include "Player.h"
 #include "RoadBorder.h"
 #include "Collision.h"
+
 class ICollisionFactory;
 class Collision;
+class IUpdate;
 
 class AccidentExeption : public exception {
 public:
@@ -16,21 +22,9 @@ public:
 	}
 };
 
-
-
 class Car : public IUpdate, public ISubscriber
 {
 
-	list<IPublisher*> _publishers;
-	double _dx = 0.0;
-	int _yPosition = 5, _xPosition = 26;
-	int _speed = 10;
-	int _maxSpeed = 140;
-	int _distance = 0;
-	Direction _direction = DIRECTION_NORTH;
-	Collision* _collisionCar;
-	RoadBorder _border;
-	Color _color = COLOR_RED;
 public:
 	Car(ICollisionFactory* factory);
 
@@ -43,11 +37,11 @@ public:
 		Color color);
 	
 	RoadBorder& getBorder(){
-		return _border;
+		return border_;
 	}
 
-	Color getColor() { return _color; }
-	void setColor(Color color) { _color = color; }
+	Color getColor() { return color_; }
+	void setColor(Color color) { color_ = color; }
 
 	void accelerate();
 
@@ -74,7 +68,7 @@ public:
 
 	Collision* getCollision();
 
-	~Car();
+	virtual ~Car();
 
 
 	// Inherited via IUpdate
@@ -87,6 +81,20 @@ public:
 
 	// Inherited via ISubscriber
 	virtual void addPublisher(IPublisher * publisher) override;
+
+
+private:
+
+	list<IPublisher*> publishers_;
+	double dx_ = 0.0;
+	int yPosition_ = 5, xPosition_ = 26;
+	int speed_ = 10;
+	int maxSpeed_ = 140;
+	int distance_ = 0;
+	Direction direction_ = DIRECTION_NORTH;
+	Collision* collisionCar_;
+	RoadBorder border_;
+	Color color_ = COLOR_RED;
 
 };
 

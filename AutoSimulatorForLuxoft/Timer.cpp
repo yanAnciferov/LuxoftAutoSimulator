@@ -2,32 +2,32 @@
 #include "Timer.h"
 
 bool Timer::update() {
-	if (_start == false)
+	if (start_ == false)
 	{
-		_clock1 = clock();
-		_start = true;
+		clock1_ = clock();
+		start_ = true;
 	}
 	else
 	{
-		_clock2 = _clock1;
-		_clock1 = clock();
+		clock2_ = clock1_;
+		clock1_ = clock();
 
-		if (_pause == false)
-			_timer += _clock1 - _clock2;
+		if (pause_ == false)
+			timer_ += clock1_ - clock2_;
 
 	}
 	return true;
 };
 
 clock_t Timer::getTime() {
-	return _timer / CLOCKS_PER_SEC;
+	return timer_ / CLOCKS_PER_SEC;
 }
 
 void Timer::pause() {
-	_pause = !_pause;
+	pause_ = !pause_;
 	Console::SetCursorPosition(47, 9);
 	Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-	if (_pause)
+	if (pause_)
 	{
 		cout << "Pause";
 	}
@@ -38,6 +38,6 @@ void Timer::pause() {
 }
 
 bool Timer::isPause() {
-	return _pause;
+	return pause_;
 }
 

@@ -11,17 +11,19 @@ using namespace std;
 
 class Game
 {
-	Road* _road;
-	Player* _player;
-	list<IUpdate*> _gameObjects;
-	ScoreTable _scoreTable;
-	Timer _timer;
+
 public:
 	Game();
 	
 	void start();
 
 private:
+
+	Road* road_;
+	Player* player_;
+	list<IUpdate*> gameObjects_;
+	ScoreTable scoreTable_;
+	Timer timer_;
 
 	bool update();
 

@@ -95,25 +95,25 @@ Collision::Collision(vector<COORD>& coords) {
 }
 
 void Collision::setCoords(vector<COORD>& coords) {
-	_coords = coords;
+	coords_ = coords;
 }
 
 COORD& Collision::at(int index) {
 
-	return _coords[index];
+	return coords_[index];
 }
 
 unsigned int Collision::getLength() {
-	return _coords.size();
+	return coords_.size();
 }
 
 bool Collision::isCollision(const Collision& collision) {
-	for (int i = 0; i < _coords.size(); i++)
+	for (int i = 0; i < coords_.size(); i++)
 	{
-		for (int j = 0; j < collision._coords.size(); j++)
+		for (int j = 0; j < collision.coords_.size(); j++)
 		{
-			if (_coords[i].X == collision._coords[j].X
-				&& _coords[i].Y == collision._coords[j].Y)
+			if (coords_[i].X == collision.coords_[j].X
+				&& coords_[i].Y == collision.coords_[j].Y)
 				return true;
 		}
 	}

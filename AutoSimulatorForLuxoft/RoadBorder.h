@@ -1,13 +1,28 @@
 #pragma once
 
-struct RoadBorder {
+
+class RoadBorder {
+
+public:
+
 	RoadBorder(int left,
 		int rigth,
 		int down,
 		int up);
-	RoadBorder() = default;
-	int leftBorder = 0;
-	int rigthBorder = 0;
-	int downBorder = 0;
-	int upBorder = 0;
+
+	RoadBorder();
+
+	const int getLeftBorder();
+
+	const int getRigthBorder();
+
+	const int getDownBorder();
+
+	const int getUpBorder();
+	
+private:
+	int _leftBorder;
+	int _rigthBorder;
+	int _downBorder;
+	int _upBorder;
 };

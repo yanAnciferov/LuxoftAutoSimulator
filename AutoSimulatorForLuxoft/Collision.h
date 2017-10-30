@@ -4,7 +4,6 @@
 class Car;
 
 class Collision{
-	vector<COORD> _coords;
 
 public:
 	Collision() {};
@@ -16,12 +15,17 @@ public:
 	unsigned int getLength();
 
 	bool isCollision(const Collision& collision);
+
+private: 
+	vector<COORD> coords_;
 };
 
 
 struct ICollisionFactory {
 
+public:
 	virtual Collision& createCollision(Car* car) = 0;
+	virtual ~ICollisionFactory() {};
 };
 
 class StandartCarCollisionFactory : public ICollisionFactory {

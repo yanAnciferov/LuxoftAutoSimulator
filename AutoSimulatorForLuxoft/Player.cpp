@@ -1,70 +1,70 @@
 #include "Player.h"
 Player::Player(Car* car) {
-	_car = car;
+	car_ = car;
 }
 
 void Player::move() {
 	notifySubscriber();
-	_distance += _dx;
+	distance_ += dx_;
 }
 
 int Player::getDistance() {
-	return _distance;
+	return distance_;
 }
 
 void Player::accelerate() {
-	_car->accelerate();
+	car_->accelerate();
 	
 }
 
 void Player::slowDown() {
-	_car->slowDown();
+	car_->slowDown();
 	
 }
 
 int Player::getMaxSpeed() {
-	return _car->getMaxSpeed();
+	return car_->getMaxSpeed();
 }
 
 int Player::getCurrentSpeed() {
-	return _car->getCurrentSpeed();
+	return car_->getCurrentSpeed();
 }
 
 int Player::getY() {
-	return _car->getY();
+	return car_->getY();
 }
 
 int Player::getX() {
-	return _car->getX();
+	return car_->getX();
 }
 
 double Player::getDx() {
-	return _dx;
+	return dx_;
 }
 
 void Player::turnLeft() {
-	_car->turnLeft();
+	car_->turnLeft();
 }
 
 void Player::turnRigth() {
-	_car->turnRigth();
+	car_->turnRigth();
 }
 
 void Player::draw() {
-	_car->draw();
+	car_->draw();
 }
 
 void Player::clear() {
-	_car->clear();
+	car_->clear();
 }
 
 bool Player::update() {
-	_dx += static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
-	if (_dx >= 1)
+	dx_ += static_cast<double>(getCurrentSpeed()) / MS_PER_FRAME;
+	if (dx_ >= 1)
 	{
 		clear();
 		move();
-		_dx -= static_cast<int>(_dx);
+		dx_ -= static_cast<int>(dx_);
 
 		draw();
 	}
@@ -72,20 +72,20 @@ bool Player::update() {
 };
 
 Collision* Player::getCollision() {
-	return _car->getCollision();
+	return car_->getCollision();
 }
 
 void Player::addSubscriber(ISubscriber * subscriber)  {
-	_subscribers.push_back(subscriber);
+	subscribers_.push_back(subscriber);
 	subscriber->addPublisher(this);
 };
 
 void Player::removeSubscriber(ISubscriber* subscriber) {
 	
-	for (size_t i = 0; i < _subscribers.size(); i++)
+	for (size_t i = 0; i < subscribers_.size(); i++)
 	{
-		if (_subscribers[i] == subscriber) {
-			_subscribers.erase(_subscribers.begin() + i);
+		if (subscribers_[i] == subscriber) {
+			subscribers_.erase(subscribers_.begin() + i);
 			return;
 		}
 		
@@ -94,11 +94,11 @@ void Player::removeSubscriber(ISubscriber* subscriber) {
 }
 
 void Player::notifySubscriber(){
-	int size = _subscribers.size();
+	int size = subscribers_.size();
 	
 		for (int i = 0; i < size; i++)
 		{
-			_subscribers[i]->handleEvent(this);
+			subscribers_[i]->handleEvent(this);
 
 		}
 	

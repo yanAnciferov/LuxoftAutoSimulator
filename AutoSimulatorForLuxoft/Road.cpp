@@ -8,11 +8,11 @@ void Road::printStrip() {
 	Color color1 = COLOR_WHITE;
 	Color color2 = COLOR_DARKGRAY;
 
-	if (_strip < 4)
+	if (strip_ < 4)
 	{
 		for (size_t i = 0; i < h; i++)
 		{
-			if ((i - _strip) % 4 == 0)
+			if ((i - strip_) % 4 == 0)
 			{
 				stripPrint = !stripPrint;
 			}
@@ -29,7 +29,7 @@ void Road::printStrip() {
 	{
 		for (size_t i = 0; i < h; i++)
 		{
-			if ((i - _strip - 4) % 4 == 0)
+			if ((i - strip_ - 4) % 4 == 0)
 			{
 				stripPrint = !stripPrint;
 			}
@@ -75,9 +75,9 @@ void Road::print() {
 void Road::move(int moveCount) {
 	for (size_t i = 0; i < moveCount; i++)
 	{
-		if (++_strip >= 8)
+		if (++strip_ >= 8)
 		{
-			_strip = 0;
+			strip_ = 0;
 		}
 	}
 
@@ -94,16 +94,16 @@ int Road::getHiegthRoad() {
 
 
 RoadBorder&  Road::getBorder() {
-	return *_border;
+	return *border_;
 }
 
 Road::Road() {
-	_strip = 0;
-	_border = new RoadBorder(3, 43, 55, 0);
+	strip_ = 0;
+	border_ = new RoadBorder(3, 43, 55, 0);
 }
 
 Road::~Road() {
-	delete _border;
+	delete border_;
 }
 
 

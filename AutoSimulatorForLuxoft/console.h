@@ -22,8 +22,6 @@ enum Color {
 
 class Console
 {
-private:
-	Console() = default;
 	
 public:
 	
@@ -70,6 +68,8 @@ public:
 		SetCurrentConsoleFontEx(hConsole, 0, lpConsoleCurrentFontEx);
 
 	}
-	
+
+private:
+	Console() = default;
 };
 

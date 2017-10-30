@@ -1,7 +1,8 @@
 #pragma once
 
-struct IUpdate
+class IUpdate
 {
 public:
 	virtual bool update() = 0;
+	virtual ~IUpdate() {};
 };

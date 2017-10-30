@@ -1,7 +1,10 @@
 #pragma once
+#ifndef COM_COMPANY_MODULE_OBSERVER_H
+#define COM_COMPANY_MODULE_OBSERVER_H
 #include "Observer.h"
+#endif
 #include "Player.h"
-#include "console.h"
+
 #include "RoadBorder.h"
 
 
@@ -9,12 +12,6 @@ class Road : public ISubscriber
 {
 
 
-	RoadBorder* _border;
-	
-	void printStrip();
-
-	int _strip;
-	
 public:
 
 	void print();
@@ -25,17 +22,21 @@ public:
 
 	int getHiegthRoad();
 
-	
 	RoadBorder& getBorder();
 
 	Road();
 
 	~Road();
 
-
 	virtual void handleEvent(IPublisher* publisher) override;
 
-	// Inherited via ISubscriber
 	virtual void addPublisher(IPublisher * publisher) override;
+
+private:
+	RoadBorder* border_;
+	int strip_;
+
+	void printStrip();
+
 };
 
