@@ -6,7 +6,8 @@
 #endif 
 
 Player::Player(Car* car): car_(*car) {
-	
+	dx_ = 0.0;
+	distance_ = 0;
 }
 
 

@@ -15,6 +15,8 @@
 class Timer: public IUpdate {
 
 public:
+	Timer();
+
 	virtual bool update() override;
 
 	clock_t getTime();
@@ -27,6 +29,6 @@ private:
 	clock_t clock1_;
 	clock_t clock2_;
 	clock_t timer_;
-	bool start_ = false;
-	bool pause_ = false;
+	bool start_;
+	bool pause_;
 };

@@ -53,6 +53,8 @@ public:
 		Direction direction,
 		Color color);
 	
+	Car();
+
 	shared_ptr<RoadBorder> getBorder() const {
 		return border_;
 	}
@@ -98,15 +100,15 @@ public:
 private:
 
 	list<IPublisher*> publishers_;
-	double dx_ = 0.0;
-	int yPosition_ = 5, xPosition_ = 26;
-	int speed_ = 10;
-	int maxSpeed_ = 140;
-	int distance_ = 0;
-	Direction direction_ = DIRECTION_NORTH;
+	double dx_;
+	int yPosition_, xPosition_ ;
+	int speed_;
+	int maxSpeed_;
+	int distance_;
+	Direction direction_;
 	shared_ptr<Collision> collisionCar_;
 	shared_ptr<RoadBorder> border_;
-	Color color_ = COLOR_RED;
+	Color color_ ;
 
 };
 

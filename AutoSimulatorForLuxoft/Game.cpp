@@ -71,16 +71,7 @@ bool Game::update() {
 	}
 	catch (exception& ex)
 	{
-		Console::SetColor(COLOR_WHITE, COLOR_GREEN);
-		system("cls");
-		Console::SetWindowSize(GAMEOVER_WINDOW_WIDTH, GAMEOVER_WINDOW_HEIGTH);
-		Console::SetCursorPosition(10, 10);
-		cout << "Game over";
-		Console::SetCursorPosition(10, 12);
-		cout << "Distance: " << player_.getDistance();
-		Console::SetCursorPosition(10, 14);
-		cout << "Time: " << static_cast<int>(timer_.getTime());
-		while (_getch() != KEYS_ENTER) {}
+		gameOver();
 		return false;
 	}
 
@@ -96,6 +87,19 @@ bool Game::update() {
 		player_.addSubscriber(car);
 	}
 	return true;
+}
+
+void Game::gameOver() {
+	Console::SetColor(COLOR_WHITE, COLOR_GREEN);
+	system("cls");
+	Console::SetWindowSize(GAMEOVER_WINDOW_WIDTH, GAMEOVER_WINDOW_HEIGTH);
+	Console::SetCursorPosition(10, 10);
+	cout << "Game over";
+	Console::SetCursorPosition(10, 12);
+	cout << "Distance: " << player_.getDistance();
+	Console::SetCursorPosition(10, 14);
+	cout << "Time: " << static_cast<int>(timer_.getTime());
+	while (_getch() != KEYS_ENTER) {}
 }
 
 Car* Game::createCar() {
@@ -177,6 +181,7 @@ bool Game::userEvent() {
 			player_.turnRigth();
 			break;
 		case KEYS_ESC:
+			gameOver();
 			return false;
 
 		default:

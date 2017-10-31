@@ -56,8 +56,8 @@ public:
 
 private: 
 
-	double dx_ = 0.0;
-	int distance_ = 0;
+	double dx_ ;
+	int distance_ ;
 	vector<ISubscriber*> subscribers_;
 	Car& car_;
 

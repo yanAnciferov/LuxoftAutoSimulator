@@ -37,6 +37,8 @@ private:
 	ICollisionFactory* getRandCollisionFactory();
 
 	bool userEvent();
+
+	void gameOver();
 	
 };
 

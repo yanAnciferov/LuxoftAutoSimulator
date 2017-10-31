@@ -5,6 +5,11 @@
 
 #endif 
 
+Timer::Timer() {
+	start_ = false;
+	pause_ = false;
+}
+
 bool Timer::update() {
 	if (start_ == false)
 	{

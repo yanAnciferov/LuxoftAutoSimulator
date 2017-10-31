@@ -39,6 +39,7 @@ int const MAX_COLOR = 15;
 int const FACTORY_COUNT = 4;
 
 int const START_X_POSITION_FOR_BOT = -5;
+int const START_Y_POSITION_FOR_BOT = 26;
 int const MIN_SPEED_FOR_BOOT = 10;
 int const MAX_SPEED_FOR_BOOT = 60;
 

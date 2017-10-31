@@ -11,6 +11,19 @@ void Car::setColor(Color color) {
 }
 
 
+
+Car::Car() {
+	dx_ = 0.0;
+	yPosition_ = START_Y_POSITION_FOR_BOT, xPosition_ = START_X_POSITION_FOR_BOT;
+	speed_ = MIN_SPEED_FOR_BOOT;
+	maxSpeed_ = MAX_CAR_SPEED;
+	distance_ = 0;
+	direction_ = DIRECTION_NORTH;
+	color_ = COLOR_RED;
+
+}
+
+
 Car::Car(const Car& car) {
 
 	list<IPublisher*> publishers_;
@@ -25,7 +38,15 @@ Car::Car(const Car& car) {
 	this->color_ = car.color_;
 }
 
-Car::Car(ICollisionFactory* factory) : collisionCar_(factory->createCollision(*this)) {}
+Car::Car(ICollisionFactory* factory) : collisionCar_(factory->createCollision(*this)) {
+	dx_ = 0.0;
+	yPosition_ = START_Y_POSITION_FOR_BOT, xPosition_ = START_X_POSITION_FOR_BOT;
+	speed_ = MIN_SPEED_FOR_BOOT;
+	maxSpeed_ = MAX_CAR_SPEED;
+	distance_ = 0;
+	direction_ = DIRECTION_NORTH;
+	color_ = COLOR_RED;
+}
 
 Car::Car(ICollisionFactory* factory,
 	int startSpeed,
@@ -34,7 +55,7 @@ Car::Car(ICollisionFactory* factory,
 	shared_ptr<RoadBorder> border,
 	Direction direction,
 	Color color
-)	
+)	: Car()
 {
 	xPosition_ = x;
 	yPosition_ = y;
