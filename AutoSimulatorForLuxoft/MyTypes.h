@@ -87,3 +87,10 @@
 #include "IUpdate.h"
 
 #endif
+
+#ifndef COM_COMPANY_MODULE_LVLINFO_H
+#define COM_COMPANY_MODULE_LVLINFO_H
+
+#include "LvlInfo.h"
+
+#endif

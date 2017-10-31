@@ -54,6 +54,12 @@ public:
 
 	virtual void notifySubscriber() override;
 
+	void reset();
+
+	~Player();
+
+
+
 private: 
 
 	double dx_ ;

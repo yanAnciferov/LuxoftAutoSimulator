@@ -17,15 +17,17 @@ public:
 
 	void setTime(clock_t time);
 
+	void updateSpeed();
+
+	void updateDistance();
+
+	void updateTimer();
+
 private: 
 
 	int speed_;
 	clock_t time_;
 	int distance_;
 
-	void updateSpeed();
-
-	void updateDistance();
-
-	void updateTimer();
+	
 };

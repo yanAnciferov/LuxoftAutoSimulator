@@ -8,6 +8,9 @@
 Timer::Timer() {
 	start_ = false;
 	pause_ = false;
+	timer_ = 0;
+	clock1_ = 0;
+	clock2_ = 0;
 }
 
 bool Timer::update() {
@@ -48,5 +51,13 @@ void Timer::pause() {
 
 bool Timer::isPause() {
 	return pause_;
+
+
 }
 
+void Timer::reset() {
+	start_ = false;
+	clock1_ = 0;
+	clock2_ = 0;
+	timer_ = 0;
+}

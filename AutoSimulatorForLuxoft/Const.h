@@ -43,6 +43,27 @@ int const START_Y_POSITION_FOR_BOT = 26;
 int const MIN_SPEED_FOR_BOOT = 10;
 int const MAX_SPEED_FOR_BOOT = 60;
 
+
+int const EASYCOUNTCAR = 4;
+int const EASYMAXSPEED = 70;
+int const EASYMINSPEED = 15;
+int const EASYDISTANCE = 300;
+
+int const NORMALCOUNTCAR = 4;
+int const NORMALMAXSPEED = 60;
+int const NORMALMINSPEED = 20;
+int const NORMALDISTANCE = 300;
+
+int const HARDCOUNTCAR = 6;
+int const HARDMAXSPEED = 70;
+int const HARDMINSPEED = 25;
+int const HARDDISTANCE = 300;
+
+int const RANGE_ATAC_PLAYER = 7;
+
+int const MENU_LEFT_MARGIN = 20;
+int const MENU_TOP_MARGIN = 20;
+
 enum Keys {
 	KEYS_RIGHTKEY = 77,
 	KEYS_LEFTKEY = 75,
@@ -88,4 +109,12 @@ enum CaseCollisionFactory {
 	FACTORY_SMART,
 	FACTORY_SPORT
 	
+};
+
+enum  DifficultyMode {
+
+	DIFFICALTY_EASY,
+	DIFFICALTY_NORMAL,
+	DIFFICALTY_HARD
+
 };

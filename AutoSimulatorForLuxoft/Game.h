@@ -22,7 +22,9 @@ public:
 	
 	void start();
 
-private:
+	virtual ~Game() {};
+
+protected:
 
 	Road road_;
 	Player player_;
@@ -30,9 +32,9 @@ private:
 	ScoreTable scoreTable_;
 	Timer timer_;
 
-	bool update();
+	virtual bool update() = 0;
 
-	Car* createCar();
+	virtual Car* createCar();
 
 	ICollisionFactory* getRandCollisionFactory();
 
@@ -40,5 +42,31 @@ private:
 
 	void gameOver();
 	
+};
+
+class GameForAScore : public Game{
+
+public:
+	GameForAScore();
+
+protected:
+	virtual bool update() override;
+};
+
+class GameWithLavel : public Game {
+
+public:
+	GameWithLavel();
+
+protected:
+	virtual bool update() override;
+
+	virtual Car* createCar() override;
+
+private:
+	vector<LvlInfo> lvls_;
+	int currentLvl_;
+
+	void nextLvl();
 };
 

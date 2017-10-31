@@ -8,6 +8,7 @@
 
 void Car::setColor(Color color) {
 	color_ = color;
+	isAngry_ = false;
 }
 
 
@@ -20,7 +21,7 @@ Car::Car() {
 	distance_ = 0;
 	direction_ = DIRECTION_NORTH;
 	color_ = COLOR_RED;
-
+	isAngry_ = false;
 }
 
 
@@ -36,6 +37,7 @@ Car::Car(const Car& car) {
 	this->collisionCar_ = shared_ptr<Collision>(new Collision(*collisionCar_));
 	this->border_ = car.border_;
 	this->color_ = car.color_;
+	this->isAngry_ = car.isAngry_;
 }
 
 Car::Car(ICollisionFactory* factory) : collisionCar_(factory->createCollision(*this)) {
@@ -46,6 +48,7 @@ Car::Car(ICollisionFactory* factory) : collisionCar_(factory->createCollision(*t
 	distance_ = 0;
 	direction_ = DIRECTION_NORTH;
 	color_ = COLOR_RED;
+	isAngry_ = false;
 }
 
 Car::Car(ICollisionFactory* factory,
@@ -65,6 +68,21 @@ Car::Car(ICollisionFactory* factory,
 	border_ = border;
 	color_ = color;
 	collisionCar_ = factory->createCollision(*this);
+
+}
+
+Car::Car(ICollisionFactory* factory,
+	int startSpeed,
+	int maxSpeed,
+	int x, int y,
+	shared_ptr<RoadBorder> border,
+	Direction direction,
+	Color color,
+	bool isAngry
+) : Car(factory,startSpeed,maxSpeed,x,y,border,direction,color)
+{
+	isAngry_ = isAngry;
+
 }
 
 
@@ -186,10 +204,10 @@ Color Car::getColor() const {
 
 void Car::handleEvent(IPublisher * publisher)
 {
-	Player* p = dynamic_cast<Player*>(publisher);
-	if (p != NULL)
+	Player* player = dynamic_cast<Player*>(publisher);
+	if (player != NULL)
 	{
-		double numberOfMovements = p->getDx();
+		double numberOfMovements = player->getDx();
 		if(numberOfMovements >= 1){
 			switch (direction_)
 			{
@@ -202,9 +220,27 @@ void Car::handleEvent(IPublisher * publisher)
 			default:
 				break;
 			}
+
+			if (isAngry_)
+			{
+				int rangeY = player->getY() - yPosition_;
+				int rangeX = player->getX() - xPosition_;
+				if (rangeX > 0 && rangeX < RANGE_ATAC_PLAYER || rangeX < 0 && rangeX > -RANGE_ATAC_PLAYER)
+				{
+					if (rangeY > 0 && rangeY < RANGE_ATAC_PLAYER)
+					{
+						turnRigth();
+					}
+					else if (rangeY < 0 && rangeY > -6) {
+						turnLeft();
+					}
+				}
+			}
 		}
 
-		shared_ptr<Collision> playerCollision = p->getCollision();
+		
+
+		shared_ptr<Collision> playerCollision = player->getCollision();
 
 		if (collisionCar_->isCollision(playerCollision))
 			throw AccidentExeption();

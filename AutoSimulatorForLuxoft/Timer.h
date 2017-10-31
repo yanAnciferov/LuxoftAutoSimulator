@@ -25,6 +25,8 @@ public:
 
 	bool isPause();
 
+	void reset();
+
 private:
 	clock_t clock1_;
 	clock_t clock2_;

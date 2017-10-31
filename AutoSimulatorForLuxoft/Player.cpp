@@ -10,7 +10,13 @@ Player::Player(Car* car): car_(*car) {
 	distance_ = 0;
 }
 
+Player::~Player() {}
 
+void Player::reset() {
+	dx_ = 0.0;
+	distance_ = 0;
+	subscribers_.clear();
+}
 
 void Player::move() {
 	notifySubscriber();

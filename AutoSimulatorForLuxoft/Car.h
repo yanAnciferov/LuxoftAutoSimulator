@@ -52,6 +52,15 @@ public:
 		shared_ptr<RoadBorder> border,
 		Direction direction,
 		Color color);
+
+	Car(ICollisionFactory* factory,
+		int startSpeed,
+		int maxSpeed,
+		int x, int y,
+		shared_ptr<RoadBorder> border,
+		Direction direction,
+		Color color,
+		bool isAngry);
 	
 	Car();
 
@@ -109,6 +118,7 @@ private:
 	shared_ptr<Collision> collisionCar_;
 	shared_ptr<RoadBorder> border_;
 	Color color_ ;
+	bool isAngry_;
 
 };
 
