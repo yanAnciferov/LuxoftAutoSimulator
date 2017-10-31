@@ -20,6 +20,7 @@ class Collision{
 
 public:
 	Collision() {};
+	Collision(const Collision& collision);
 	Collision(vector<COORD>& coords);
 	void setCoords(vector<COORD>& coords);
 
@@ -27,7 +28,7 @@ public:
 
 	unsigned int getLength();
 
-	bool isCollision(const Collision& collision);
+	bool isCollision(shared_ptr<Collision> collision);
 
 private: 
 	vector<COORD> coords_;
@@ -37,30 +38,30 @@ private:
 struct ICollisionFactory {
 
 public:
-	virtual Collision& createCollision(Car* car) = 0;
+	virtual shared_ptr<Collision> createCollision(const Car& car) = 0;
 	virtual ~ICollisionFactory() {};
 };
 
 class StandartCarCollisionFactory : public ICollisionFactory {
 
 public:
-	Collision& createCollision(Car* car) override;
+	shared_ptr<Collision> createCollision(const Car& car) override;
 };
 
 class HatchbackCarCollisionFactory : public ICollisionFactory {
 
 public:
-	Collision& createCollision(Car* car) override;
+	shared_ptr<Collision> createCollision(const Car& car) override;
 };
 
 class SmartCarCollisionFactory : public ICollisionFactory {
 
 public:
-	Collision& createCollision(Car* car) override;
+	shared_ptr<Collision> createCollision(const Car& car) override;
 };
 
 class SportCarCollisionFactory : public ICollisionFactory {
 
 public:
-	Collision& createCollision(Car* car) override;
+	shared_ptr<Collision> createCollision(const Car& car) override;
 };

@@ -31,7 +31,7 @@ public:
 
 	int getDistance();
 
-	Collision* getCollision();
+	shared_ptr<Collision> getCollision() const;
 
 	int getY();
 	int getX();
@@ -59,7 +59,7 @@ private:
 	double dx_ = 0.0;
 	int distance_ = 0;
 	vector<ISubscriber*> subscribers_;
-	Car* car_;
+	Car& car_;
 
 	void move();
 };

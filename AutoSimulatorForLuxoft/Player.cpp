@@ -5,9 +5,11 @@
 
 #endif 
 
-Player::Player(Car* car) {
-	car_ = car;
+Player::Player(Car* car): car_(*car) {
+	
 }
+
+
 
 void Player::move() {
 	notifySubscriber();
@@ -19,29 +21,29 @@ int Player::getDistance() {
 }
 
 void Player::accelerate() {
-	car_->accelerate();
+	car_.accelerate();
 	
 }
 
 void Player::slowDown() {
-	car_->slowDown();
+	car_.slowDown();
 	
 }
 
 int Player::getMaxSpeed() {
-	return car_->getMaxSpeed();
+	return car_.getMaxSpeed();
 }
 
 int Player::getCurrentSpeed() {
-	return car_->getCurrentSpeed();
+	return car_.getCurrentSpeed();
 }
 
 int Player::getY() {
-	return car_->getY();
+	return car_.getY();
 }
 
 int Player::getX() {
-	return car_->getX();
+	return car_.getX();
 }
 
 double Player::getDx() {
@@ -49,19 +51,19 @@ double Player::getDx() {
 }
 
 void Player::turnLeft() {
-	car_->turnLeft();
+	car_.turnLeft();
 }
 
 void Player::turnRigth() {
-	car_->turnRigth();
+	car_.turnRigth();
 }
 
 void Player::draw() {
-	car_->draw();
+	car_.draw();
 }
 
 void Player::clear() {
-	car_->clear();
+	car_.clear();
 }
 
 bool Player::update() {
@@ -77,8 +79,8 @@ bool Player::update() {
 	return true;
 };
 
-Collision* Player::getCollision() {
-	return car_->getCollision();
+shared_ptr<Collision> Player::getCollision() const {
+	return car_.getCollision();
 }
 
 void Player::addSubscriber(ISubscriber * subscriber)  {

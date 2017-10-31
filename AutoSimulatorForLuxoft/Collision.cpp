@@ -4,9 +4,9 @@
 #include "Collision.h"
 
 #endif 
-Collision& StandartCarCollisionFactory::createCollision(Car* car) {
-	short int x = car->getX(), y = car->getY();
-	if (car->getDirection() == DIRECTION_NORTH)
+shared_ptr<Collision> StandartCarCollisionFactory::createCollision(const Car& car) {
+	short int x = car.getX(), y = car.getY();
+	if (car.getDirection() == DIRECTION_NORTH)
 	{
 		vector<COORD> coords = {
 			{ x,y },
@@ -15,7 +15,7 @@ Collision& StandartCarCollisionFactory::createCollision(Car* car) {
 			{ x + 3,y - 1 },{ x + 3,y + 1 }
 		};
 
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 	else {
 		vector<COORD> coords = {
@@ -25,14 +25,14 @@ Collision& StandartCarCollisionFactory::createCollision(Car* car) {
 			{ x - 3,y - 1 },{ x - 3,y + 1 }
 		};
 
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 
 }
 
-Collision& HatchbackCarCollisionFactory::createCollision(Car* car) {
-	short int x = car->getX(), y = car->getY();
-	if (car->getDirection() == DIRECTION_NORTH)
+shared_ptr<Collision> HatchbackCarCollisionFactory::createCollision(const Car& car) {
+	short int x = car.getX(), y = car.getY();
+	if (car.getDirection() == DIRECTION_NORTH)
 	{
 		vector<COORD> coords = {
 			{ x,y },
@@ -41,7 +41,7 @@ Collision& HatchbackCarCollisionFactory::createCollision(Car* car) {
 			{ x + 3,y - 1 },{ x + 3,y },{ x + 3,y + 1 }
 		};
 
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 	else {
 		vector<COORD> coords = {
@@ -51,14 +51,14 @@ Collision& HatchbackCarCollisionFactory::createCollision(Car* car) {
 			{ x - 3,y - 1 },{ x - 3,y },{ x - 3,y + 1 }
 		};
 
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 
 }
 
 
-Collision& SmartCarCollisionFactory::createCollision(Car* car) {
-	short int x = car->getX(), y = car->getY();
+shared_ptr<Collision> SmartCarCollisionFactory::createCollision(const Car& car) {
+	short int x = car.getX(), y = car.getY();
 	
 		vector<COORD> coords = {
 			{ x,y - 1 },{ x,y + 1 },
@@ -66,20 +66,20 @@ Collision& SmartCarCollisionFactory::createCollision(Car* car) {
 			{ x + 2,y - 1 },{ x + 2,y + 1 }
 		};
 
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 }
 
-Collision& SportCarCollisionFactory::createCollision(Car* car) {
-	short int x = car->getX(), y = car->getY();
+shared_ptr<Collision> SportCarCollisionFactory::createCollision(const Car& car) {
+	short int x = car.getX(), y = car.getY();
 
-	if (car->getDirection() == DIRECTION_NORTH)
+	if (car.getDirection() == DIRECTION_NORTH)
 	{
 		vector<COORD> coords = {
 			{ x,y },
 			{ x + 1,y + 1 },{ x + 1,y },{ x + 1,y - 1 },
 			{ x + 2,y - 1 },{ x + 2,y + 1 }
 		};
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 	else
 	{
@@ -88,14 +88,23 @@ Collision& SportCarCollisionFactory::createCollision(Car* car) {
 			{ x - 1,y},{ x - 1,y - 1},{ x - 1,y + 1 },
 			{ x ,y}
 		};
-		return *new Collision(coords);
+		return shared_ptr<Collision>(new Collision(coords));
 	}
 
 	
 }
 
+Collision::Collision(const Collision& collision) {
+	for (size_t i = 0; i <  collision.coords_.size(); i++)
+	{
+		this->coords_.push_back(COORD(*(collision.coords_.begin() + i)));
+	}
+	
+}
+
 Collision::Collision(vector<COORD>& coords) {
-	setCoords(coords);
+	vector<COORD> tmpCoords = coords;
+	setCoords(tmpCoords);
 }
 
 void Collision::setCoords(vector<COORD>& coords) {
@@ -111,13 +120,13 @@ unsigned int Collision::getLength() {
 	return coords_.size();
 }
 
-bool Collision::isCollision(const Collision& collision) {
+bool Collision::isCollision(shared_ptr<Collision> collision) {
 	for (int i = 0; i < coords_.size(); i++)
 	{
-		for (int j = 0; j < collision.coords_.size(); j++)
+		for (int j = 0; j < collision->coords_.size(); j++)
 		{
-			if (coords_[i].X == collision.coords_[j].X
-				&& coords_[i].Y == collision.coords_[j].Y)
+			if (coords_[i].X == collision->coords_[j].X
+				&& coords_[i].Y == collision->coords_[j].Y)
 				return true;
 		}
 	}

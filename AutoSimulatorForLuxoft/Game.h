@@ -24,8 +24,8 @@ public:
 
 private:
 
-	Road* road_;
-	Player* player_;
+	Road road_;
+	Player player_;
 	vector<IUpdate*> gameObjects_;
 	ScoreTable scoreTable_;
 	Timer timer_;

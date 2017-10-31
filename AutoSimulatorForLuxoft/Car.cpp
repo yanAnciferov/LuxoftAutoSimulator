@@ -6,19 +6,35 @@
 #endif 
 
 
-
-Car::Car(ICollisionFactory* factory) {
-	collisionCar_ = &factory->createCollision(this);
+void Car::setColor(Color color) {
+	color_ = color;
 }
+
+
+Car::Car(const Car& car) {
+
+	list<IPublisher*> publishers_;
+	this->dx_ = car.dx_;
+	this->yPosition_ = car.yPosition_, this->xPosition_ = car.xPosition_;
+	this->speed_ = car.speed_;
+	this->maxSpeed_ = car.maxSpeed_;
+	this->distance_ = car.distance_;
+	this->direction_ = this->direction_;
+	this->collisionCar_ = shared_ptr<Collision>(new Collision(*collisionCar_));
+	this->border_ = car.border_;
+	this->color_ = car.color_;
+}
+
+Car::Car(ICollisionFactory* factory) : collisionCar_(factory->createCollision(*this)) {}
 
 Car::Car(ICollisionFactory* factory,
 	int startSpeed,
 	int maxSpeed,
 	int x, int y,
-	const RoadBorder& border,
+	shared_ptr<RoadBorder> border,
 	Direction direction,
 	Color color
-	)
+)	
 {
 	xPosition_ = x;
 	yPosition_ = y;
@@ -26,8 +42,8 @@ Car::Car(ICollisionFactory* factory,
 	maxSpeed_ = maxSpeed;
 	direction_ = direction;
 	border_ = border;
-	collisionCar_ = &factory->createCollision(this);
 	color_ = color;
+	collisionCar_ = factory->createCollision(*this);
 }
 
 
@@ -47,7 +63,7 @@ int Car::getMaxSpeed() {
 	return maxSpeed_;
 }
 
-Direction Car::getDirection() {
+Direction Car::getDirection() const {
 	return direction_;
 }
 
@@ -55,11 +71,11 @@ int Car::getCurrentSpeed() {
 	return speed_;
 }
 
-int Car::getY() {
+int Car::getY() const {
 	return yPosition_;
 }
 
-int Car::getX() {
+int Car::getX() const {
 	return xPosition_;
 }
 
@@ -70,7 +86,7 @@ void Car::draw() {
 		int x = collisionCar_->at(i).X;
 		int y = collisionCar_->at(i).Y;
 		Console::SetColor(color_, COLOR_DARKGRAY);
-		if (x <= border_.getDownBorder() && x >= border_.getUpBorder()) {
+		if (x <= border_->getDownBorder() && x >= border_->getUpBorder()) {
 			Console::SetCursorPosition(y,x);
 			cout << char(RECTANGLE_SYMBOL);
 		}
@@ -100,7 +116,7 @@ void Car::clear() {
 		int x = collisionCar_->at(i).X;
 		int y = collisionCar_->at(i).Y;
 		Console::SetColor(color_, COLOR_DARKGRAY);
-		if (x <= border_.getDownBorder() && x >= border_.getUpBorder()) {
+		if (x <= border_->getDownBorder() && x >= border_->getUpBorder()) {
 			Console::SetCursorPosition(y, x);
 			cout << ' ';
 		}
@@ -109,7 +125,7 @@ void Car::clear() {
 
 void Car::turnLeft() {
 	
-	if (yPosition_ > border_.getLeftBorder() + 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
+	if (yPosition_ > border_->getLeftBorder() + 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
 	{
 		clear();
 		for (int i = 0; i < collisionCar_->getLength(); i++)
@@ -125,7 +141,7 @@ void Car::turnLeft() {
 
 void Car::turnRigth() {
 	
-	if (yPosition_ < border_.getRigthBorder() - 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
+	if (yPosition_ < border_->getRigthBorder() - 1 && speed_ > MIN_CAR_SPEED_FOR_TURN)
 	{
 		clear();
 		for (int i = 0; i < collisionCar_->getLength(); i++)
@@ -141,6 +157,10 @@ void Car::turnRigth() {
 
 Car::~Car() {
 	
+}
+
+Color Car::getColor() const {
+	return color_;
 }
 
 void Car::handleEvent(IPublisher * publisher)
@@ -163,7 +183,7 @@ void Car::handleEvent(IPublisher * publisher)
 			}
 		}
 
-		Collision& playerCollision = *p->getCollision();
+		shared_ptr<Collision> playerCollision = p->getCollision();
 
 		if (collisionCar_->isCollision(playerCollision))
 			throw AccidentExeption();
@@ -172,7 +192,7 @@ void Car::handleEvent(IPublisher * publisher)
 	
 }
 
-Collision* Car::getCollision()
+shared_ptr<Collision> Car::getCollision() const
 {
 	return collisionCar_;
 }

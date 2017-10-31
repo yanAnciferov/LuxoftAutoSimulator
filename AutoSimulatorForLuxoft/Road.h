@@ -22,13 +22,13 @@ public:
 
 	void move(int moveCount);
 
-	int getWidthRoad();
+	int getWidthRoad() const;
 
-	int getHiegthRoad();
+	int getHiegthRoad() const;
 
-	int getRoadwayCount();
+	int getRoadwayCount() const;
 
-	RoadBorder& getBorder();
+	shared_ptr<RoadBorder> getBorder() const;
 
 	Road();
 
@@ -39,7 +39,7 @@ public:
 	virtual void addPublisher(IPublisher * publisher) override;
 
 private:
-	RoadBorder* border_;
+	shared_ptr<RoadBorder> border_;
 	int strip_;
 
 	void printStrip();

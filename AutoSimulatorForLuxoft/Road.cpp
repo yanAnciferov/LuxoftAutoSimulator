@@ -89,34 +89,35 @@ void Road::move(int moveCount) {
 	printStrip();
 }
 
-int Road::getWidthRoad() {
+int Road::getWidthRoad() const {
 	return ROAD_RIGTH_COORD - ROAD_LEFT_COORD + 1;
 }
 
-int Road::getHiegthRoad() {
+int Road::getHiegthRoad() const {
 	return ROAD_BOTTOM_COORD + 1;
 }
-
-int Road::getRoadwayCount() {
+int Road::getRoadwayCount() const {
 	return ROADWEY_COUNT;
 }
 
-RoadBorder&  Road::getBorder() {
-	return *border_;
+shared_ptr<RoadBorder> Road::getBorder() const {
+	return border_;
 }
 
 Road::Road() {
 	strip_ = START_STRIP_POSITION;
-	border_ = new RoadBorder(
+	border_ = shared_ptr<RoadBorder>(
+				new RoadBorder(
 						ROAD_LEFT_COORD,
 						ROAD_RIGTH_COORD,
 						ROAD_BOTTOM_COORD,
 						ROAD_TOP_COORD
-						);
+						)
+					);
 }
 
 Road::~Road() {
-	delete border_;
+	
 }
 
 

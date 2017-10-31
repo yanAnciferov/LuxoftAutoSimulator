@@ -7,6 +7,13 @@
 
 #endif 
 
+#ifndef COM_COMPANY_MODULE_MEMORY_H
+#define COM_COMPANY_MODULE_MEMORY_H
+
+#include <memory>
+
+#endif 
+
 #ifndef COM_COMPANY_MODULE_STDIO_H
 #define COM_COMPANY_MODULE_STDIO_H
 

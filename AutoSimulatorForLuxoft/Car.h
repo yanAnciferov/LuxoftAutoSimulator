@@ -43,20 +43,23 @@ class Car : public IUpdate, public ISubscriber
 public:
 	Car(ICollisionFactory* factory);
 
+	Car(const Car& car);
+
 	Car(ICollisionFactory* factory,
 		int startSpeed,
 		int maxSpeed,
 		int x, int y,
-		const RoadBorder& border,
+		shared_ptr<RoadBorder> border,
 		Direction direction,
 		Color color);
 	
-	RoadBorder& getBorder(){
+	shared_ptr<RoadBorder> getBorder() const {
 		return border_;
 	}
 
-	Color getColor() { return color_; }
-	void setColor(Color color) { color_ = color; }
+	Color getColor() const;
+
+	void setColor(Color color);
 
 	void accelerate();
 
@@ -65,9 +68,9 @@ public:
 	virtual int getMaxSpeed();
 	int getCurrentSpeed();
 
-	int getY();
+	int getY() const;
 
-	int getX();
+	int getX() const;
 
 	void draw();
 
@@ -79,22 +82,16 @@ public:
 
 	void move(int moveCount);
 
-	Direction getDirection();
+	Direction getDirection() const;
 
-	Collision* getCollision();
+	shared_ptr<Collision> getCollision() const;
 
 	virtual ~Car();
 
-
-	// Inherited via IUpdate
 	virtual bool update() override;
 
-
-	// Inherited via ISubscriber
 	virtual void handleEvent(IPublisher * publisher) override;
 
-
-	// Inherited via ISubscriber
 	virtual void addPublisher(IPublisher * publisher) override;
 
 
@@ -107,8 +104,8 @@ private:
 	int maxSpeed_ = 140;
 	int distance_ = 0;
 	Direction direction_ = DIRECTION_NORTH;
-	Collision* collisionCar_;
-	RoadBorder border_;
+	shared_ptr<Collision> collisionCar_;
+	shared_ptr<RoadBorder> border_;
 	Color color_ = COLOR_RED;
 
 };
