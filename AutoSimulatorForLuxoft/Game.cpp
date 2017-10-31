@@ -61,6 +61,16 @@ void Game::gameOver() {
 	while (_getch() != KEYS_ENTER) {}
 }
 
+void Game::gameWinner() {
+	Console::SetColor(COLOR_WHITE, COLOR_GREEN);
+	system("cls");
+	Console::SetWindowSize(GAMEOVER_WINDOW_WIDTH, GAMEOVER_WINDOW_HEIGTH);
+	Console::SetCursorPosition(10, 10);
+	cout << "You Win!!";
+	while (_getch() != KEYS_ENTER) {}
+	exit(0);
+}
+
 Car* Game::createCar() {
 
 	shared_ptr<RoadBorder> border = road_.getBorder();
@@ -240,7 +250,14 @@ bool GameWithLavel::update() {
 	}
 	if (player_.getDistance() >= lvls_[currentLvl_].getDistanceForWin()) {
 		nextLvl();
+		if (lvls_.size() == currentLvl_)
+		{
+			gameWinner();
+		}
 	}
+
+
+
 	return true;
 }
 

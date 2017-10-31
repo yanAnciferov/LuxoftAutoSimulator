@@ -41,6 +41,8 @@ protected:
 	bool userEvent();
 
 	void gameOver();
+
+	void gameWinner();
 	
 };
 
