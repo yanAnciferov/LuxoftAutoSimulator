@@ -32,7 +32,7 @@ private:
 
 	bool update();
 
-	Car* CreateCar();
+	Car* createCar();
 
 	ICollisionFactory* getRandCollisionFactory();
 

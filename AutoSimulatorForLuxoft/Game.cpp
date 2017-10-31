@@ -91,14 +91,14 @@ bool Game::update() {
 
 	if (gameObjects_.size() < MAX_GAME_OBJECT)
 	{
-		Car* car = CreateCar();
+		Car* car = createCar();
 		gameObjects_.push_back(car);
 		player_.addSubscriber(car);
 	}
 	return true;
 }
 
-Car* Game::CreateCar() {
+Car* Game::createCar() {
 
 	shared_ptr<RoadBorder> border = road_.getBorder();
 
